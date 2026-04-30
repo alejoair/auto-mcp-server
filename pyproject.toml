@@ -5,8 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "auto-mcp-server"
 version = "0.1.0"
-description = ""
+description = "Create and run MCP servers from a JSON config file"
 requires-python = ">=3.10"
 dependencies = [
-    "claude-agent-sdk>=0.1.71",
+    "click>=8.0",
+    "fastmcp>=2.0",
+    "pydantic>=2.0",
 ]
+
+[project.scripts]
+auto-mcp-server = "auto_mcp_server.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/auto_mcp_server"]
